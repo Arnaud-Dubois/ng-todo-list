@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Tuto Todo List</title>
+	<link rel="stylesheet" href="css/style.css">
+	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet"> 
+	<link rel="stylesheet" href="css/font-awesome.min.css">
+
+</head>
+<body ng-app="app">
+	<span style="color:#4B4C7A;">not properly working on Firefox</span>
+	<section class="container" ng-controller="tutoCtrl">
+		<header>
+			<h1>Get down to business</h1>
+			<form action="#" class="add-form" ng-submit="addTask()">
+				<!-- <h3>Ajouter une tâche</h3> -->
+				<input class="add-task" type="text" placeholder="Nouvelle tâche..." autofocus="autofocus" autocomplete="off" ng-model="newTask">
+				<input class="submit-task" type="submit" value="+">
+			</form>
+		</header>
+		<div>
+			<ul>
+				<li ng-repeat="task in tasksList" class="delete" ng-class="{completed : task.completed}">
+					<div class="view">
+							<div class="checkboxOne">
+								<input type="checkbox" id="{{task.name}}" class="check-task toggle" ng-model="task.completed">
+								<label for="{{task.name}}">{{task.name}}</label>
+							</div>
+						<button class="destroy" ng-click="deleteTask($index)">X</button>
+					</div>
+				</li>
+			</ul>
+		</div>
+		<footer>
+			<span><strong>{{tasksRemaining}}</strong> Tasks remaining</span>
+		</footer>
+	</section>
+
+	
+	
+	<script type="text/javascript" src="../lib/angular.min.js"></script>
+	<script type="text/javascript" src="js/app.js"></script>
+</body>
+</html>
